@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "esModuleInterop": true,
+        "target": "ES6", // 目标 JavaScript 版本
+        "module": "CommonJS", // 使用 CommonJS 模块系统
+        "outDir": "./dist", // 编译输出目录
+        "rootDir": "./src", // TypeScript 源代码目录
+        "strict": true, // 启用 TypeScript 严格模式
+    },
+    "include": [
+        "src/**/*.ts"
+    ], // 要编译的文件的目录
+    "exclude": [
+        "node_modules"
+    ] // 要排除的文件/目录
+}
