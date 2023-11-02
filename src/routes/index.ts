@@ -1,5 +1,5 @@
-import webInfoRouter from "./api/webInfo";
+import webInfoRouter from './api/webInfo';
 
 export const API = {
-    webInfo: webInfoRouter
-}
+  webInfo: webInfoRouter,
+};

@@ -1,0 +1,1 @@
+[教程](https://www.yiibai.com/mongodb/mongodb_quick_guide.html)

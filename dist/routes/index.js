@@ -6,5 +6,5 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.API = void 0;
 const webInfo_1 = __importDefault(require("./api/webInfo"));
 exports.API = {
-    webInfo: webInfo_1.default
+    webInfo: webInfo_1.default,
 };
