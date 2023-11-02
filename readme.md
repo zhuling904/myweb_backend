@@ -48,7 +48,7 @@
 
 ## 3.关于我页面
 
-![image-20231102231842236](/Users/zhuling/Documents/zhuling/web_back_end/assets/image-20231102231842236.png)
+![image-20231102231842236](./assets/image-20231102231842236.png)
 
 ```json
 {
