@@ -4,6 +4,7 @@ import { findWebInfo, updateWebInfo } from './db';
 const webInfoRouter = express.Router();
 
 let jsonParser = bodyParser.json();
+
 webInfoRouter.get('/webInfo', (req, res) => {
   findWebInfo()
     .then((data) => {
