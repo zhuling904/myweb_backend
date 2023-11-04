@@ -10,6 +10,7 @@ const routes_1 = require("./routes");
 const app = (0, express_1.default)();
 (0, db_1.dbConnect)()
     .then((res) => {
+    // 使用首页路由模块
     app.use('/api', routes_1.API.webInfo);
 })
     .catch((err) => {

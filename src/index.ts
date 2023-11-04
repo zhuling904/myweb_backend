@@ -8,6 +8,7 @@ const app = express();
 
 dbConnect()
   .then((res) => {
+    // 使用首页路由模块
     app.use('/api', API.webInfo);
   })
   .catch((err) => {
