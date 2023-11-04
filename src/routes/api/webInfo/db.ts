@@ -119,7 +119,6 @@ export async function updateWebInfoPartial(
 }
 
 /** 删除roles中的指定内容 */
-// 创建一个函数来从 roles 数组中删除指定内容
 export async function removeRoleFromWebInfo(
   authorId: string,
   roleToRemove: string,
@@ -146,7 +145,7 @@ export async function removeRoleFromWebInfo(
   }
 }
 
-// 创建一个函数来向 roles 数组中添加指定内容
+/** 创建一个函数来向 roles 数组中添加指定内容 */
 export async function addRoleToWebInfo(authorId: string, roleToAdd: string) {
   try {
     const updatedAuthor = await MODLES.webInfo
@@ -170,7 +169,7 @@ export async function addRoleToWebInfo(authorId: string, roleToAdd: string) {
   }
 }
 
-// 创建一个函数来在 roles 数组的指定位置插入内容
+/** 创建一个函数来在 roles 数组的指定位置插入内容 */
 export async function insertRoleAtPosition(
   authorId: string,
   roleToInsert: string,
@@ -201,7 +200,7 @@ export async function insertRoleAtPosition(
   }
 }
 
-// 创建一个函数来向 social 数组中添加指定内容
+/** 创建一个函数来向 social 数组中添加指定内容 */
 export async function addSocialToWebInfo(id: string, socialToAdd: SOCIAL) {
   try {
     const updatedSocial = await MODLES.webInfo
@@ -228,7 +227,7 @@ export async function addSocialToWebInfo(id: string, socialToAdd: SOCIAL) {
   }
 }
 
-// 创建一个函数来从 social 数组中删除指定内容
+/** 创建一个函数来从 social 数组中删除指定内容 */
 export async function removeSocialFromAuthor(
   id: string,
   socialNameToRemove: string,
@@ -258,7 +257,7 @@ export async function removeSocialFromAuthor(
   }
 }
 
-// 创建一个函数来在 social 数组的指定位置插入内容
+/** 创建一个函数来在 social 数组的指定位置插入内容 */
 export async function insertSocialAtPosition(
   id: string,
   socialToInsert: SOCIAL,

@@ -125,7 +125,6 @@ function updateWebInfoPartial(id, updateData) {
 }
 exports.updateWebInfoPartial = updateWebInfoPartial;
 /** 删除roles中的指定内容 */
-// 创建一个函数来从 roles 数组中删除指定内容
 function removeRoleFromWebInfo(authorId, roleToRemove) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
@@ -148,7 +147,7 @@ function removeRoleFromWebInfo(authorId, roleToRemove) {
     });
 }
 exports.removeRoleFromWebInfo = removeRoleFromWebInfo;
-// 创建一个函数来向 roles 数组中添加指定内容
+/** 创建一个函数来向 roles 数组中添加指定内容 */
 function addRoleToWebInfo(authorId, roleToAdd) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
@@ -171,7 +170,7 @@ function addRoleToWebInfo(authorId, roleToAdd) {
     });
 }
 exports.addRoleToWebInfo = addRoleToWebInfo;
-// 创建一个函数来在 roles 数组的指定位置插入内容
+/** 创建一个函数来在 roles 数组的指定位置插入内容 */
 function insertRoleAtPosition(authorId, roleToInsert, position) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
@@ -194,7 +193,7 @@ function insertRoleAtPosition(authorId, roleToInsert, position) {
     });
 }
 exports.insertRoleAtPosition = insertRoleAtPosition;
-// 创建一个函数来向 social 数组中添加指定内容
+/** 创建一个函数来向 social 数组中添加指定内容 */
 function addSocialToWebInfo(id, socialToAdd) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
@@ -217,7 +216,7 @@ function addSocialToWebInfo(id, socialToAdd) {
     });
 }
 exports.addSocialToWebInfo = addSocialToWebInfo;
-// 创建一个函数来从 social 数组中删除指定内容
+/** 创建一个函数来从 social 数组中删除指定内容 */
 function removeSocialFromAuthor(id, socialNameToRemove) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
@@ -240,7 +239,7 @@ function removeSocialFromAuthor(id, socialNameToRemove) {
     });
 }
 exports.removeSocialFromAuthor = removeSocialFromAuthor;
-// 创建一个函数来在 social 数组的指定位置插入内容
+/** 创建一个函数来在 social 数组的指定位置插入内容 */
 function insertSocialAtPosition(id, socialToInsert, position) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
