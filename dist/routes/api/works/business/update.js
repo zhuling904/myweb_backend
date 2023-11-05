@@ -2,11 +2,15 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.dealWorksUpdateData = void 0;
 function dealWorksUpdateData(req, res) {
-    const { type, tags, title, desc, coverImg, link, avatarImg, likes, visitors, } = req.body;
+    const { type, subType, tags, title, desc, coverImg, link, avatarImg, likes, visitors, } = req.body;
     const updateData = {};
     // 更新类型
     if (type) {
         updateData.type = type;
+    }
+    // 二级分类
+    if (subType) {
+        updateData.subType = subType;
     }
     // 更新标签
     if (tags) {

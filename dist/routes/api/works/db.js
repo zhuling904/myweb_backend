@@ -13,6 +13,7 @@ exports.insertTagsAtPosition = exports.addTagsToWorks = exports.removeTagFromWor
 const models_1 = require("../../../models");
 const worksDataToAdd = {
     type: 'animation',
+    subType: '推荐',
     tags: ['动画', 'CSS'],
     title: '拖拽排序',
     desc: '一个拖拽排序列表',

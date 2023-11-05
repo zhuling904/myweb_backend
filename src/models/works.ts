@@ -8,6 +8,12 @@ const worksSchema = new Schema({
     default: 'animation',
     require: true,
   },
+  // 二级分类
+  subType: {
+    type: String,
+    default: '最新',
+    require: true,
+  },
   // 标签
   tags: {
     type: [String],

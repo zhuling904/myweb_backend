@@ -2,6 +2,7 @@ import { MODLES } from '../../../models';
 
 export interface WORKS {
   type: string;
+  subType: string;
   tags: string[];
   title: string;
   desc: string;
@@ -14,6 +15,7 @@ export interface WORKS {
 
 const worksDataToAdd = {
   type: 'animation',
+  subType: '推荐',
   tags: ['动画', 'CSS'],
   title: '拖拽排序',
   desc: '一个拖拽排序列表',

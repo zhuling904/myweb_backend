@@ -3,19 +3,23 @@ import { WORKS } from '../db';
 export function dealAddOneWork(req: any, res: any) {
   const {
     type,
+    subType,
     tags,
     title,
     desc,
     coverImg = '',
     link = '',
     avatarImg = '',
-    likes = 1,
-    visitors = 1,
   } = req.body;
   const updateData: Partial<WORKS> = {};
   // 更新类型
   if (!type) {
     return res.status(400).json({ error: 'Invalid type format' });
+  }
+
+  // 更新类型
+  if (!subType) {
+    return res.status(400).json({ error: 'Invalid subType format' });
   }
 
   // 更新标签

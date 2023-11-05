@@ -3,6 +3,7 @@ import { WORKS } from '../db';
 export function dealWorksUpdateData(req: any, res: any) {
   const {
     type,
+    subType,
     tags,
     title,
     desc,
@@ -16,6 +17,10 @@ export function dealWorksUpdateData(req: any, res: any) {
   // 更新类型
   if (type) {
     updateData.type = type;
+  }
+  // 二级分类
+  if (subType) {
+    updateData.subType = subType;
   }
   // 更新标签
   if (tags) {

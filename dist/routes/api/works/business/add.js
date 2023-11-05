@@ -2,11 +2,15 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.dealAddOneWork = void 0;
 function dealAddOneWork(req, res) {
-    const { type, tags, title, desc, coverImg = '', link = '', avatarImg = '', likes = 1, visitors = 1, } = req.body;
+    const { type, subType, tags, title, desc, coverImg = '', link = '', avatarImg = '', } = req.body;
     const updateData = {};
     // 更新类型
     if (!type) {
         return res.status(400).json({ error: 'Invalid type format' });
+    }
+    // 更新类型
+    if (!subType) {
+        return res.status(400).json({ error: 'Invalid subType format' });
     }
     // 更新标签
     if (!tags || !Array.isArray(tags)) {
