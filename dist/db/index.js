@@ -16,10 +16,11 @@ exports.dbConnect = void 0;
 //2. 导入 mongoose
 const mongoose_1 = __importDefault(require("mongoose"));
 const config_1 = require("./config");
-const dbUrl = `mongodb://${config_1.DB_CONFIG.DB_HOST}:${config_1.DB_CONFIG.DB_PORT}/${config_1.DB_CONFIG.DB_NAME}`;
+const dbUrl = `mongodb://root:zhuling@${config_1.DB_CONFIG.DB_HOST}:${config_1.DB_CONFIG.DB_PORT}/${config_1.DB_CONFIG.DB_NAME}?authSource=admin`;
 function dbConnect() {
     return __awaiter(this, void 0, void 0, function* () {
-        //3. 连接数据库 
+        console.log('✅ ~ dbUrl:', dbUrl);
+        //3. 连接数据库
         mongoose_1.default.set('strictQuery', true);
         const db = yield mongoose_1.default.connect(dbUrl);
         return db;

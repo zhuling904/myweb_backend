@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import {
   addRoleToWebInfo,
   addSocialToWebInfo,
+  addWebInfo,
   getWebInfo,
   removeRoleFromWebInfo,
   removeSocialFromWebInfo,

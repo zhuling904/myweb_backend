@@ -24,7 +24,6 @@ const aboutRouter = express_1.default.Router();
 let jsonParser = body_parser_1.default.json();
 /** 获取关于我信息 */
 aboutRouter.get('/about', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    (0, db_1.addAbout)();
     const aboutInfo = yield (0, db_1.getAbout)();
     res.json(aboutInfo);
 }));

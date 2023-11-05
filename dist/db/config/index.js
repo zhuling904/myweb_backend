@@ -4,5 +4,5 @@ exports.DB_CONFIG = void 0;
 exports.DB_CONFIG = {
     DB_HOST: '127.0.0.1',
     DB_PORT: 27017,
-    DB_NAME: 'myweb'
+    DB_NAME: 'myweb',
 };

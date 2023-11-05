@@ -5,6 +5,7 @@ import { logHelper } from '../../../utils';
 import {
   addOneWorks,
   addTagsToWorks,
+  addWorks,
   delOneWork,
   getAllWorks,
   removeTagFromWorks,

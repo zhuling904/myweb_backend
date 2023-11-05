@@ -24,7 +24,6 @@ let jsonParser = bodyParser.json();
 
 /** 获取关于我信息 */
 aboutRouter.get('/about', async (req, res) => {
-  addAbout();
   const aboutInfo = await getAbout();
   res.json(aboutInfo);
 });
