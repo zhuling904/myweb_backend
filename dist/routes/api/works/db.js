@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.insertTagsAtPosition = exports.addTagsToWorks = exports.removeTagFromWorks = exports.updateWorksPartial = exports.delOneWork = exports.getOneWorks = exports.getAllWorks = exports.addWorks = void 0;
+exports.insertTagsAtPosition = exports.addTagsToWorks = exports.removeTagFromWorks = exports.updateWorksPartial = exports.delOneWork = exports.getOneWorks = exports.getAllWorks = exports.addOneWorks = exports.addWorks = void 0;
 const models_1 = require("../../../models");
 const worksDataToAdd = {
     type: 'animation',
@@ -29,23 +29,44 @@ function addWorks() {
     });
 }
 exports.addWorks = addWorks;
+/** 新增作品 */
+function addOneWorks(updateData) {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            const document = yield models_1.MODLES.works.create(updateData);
+            if (document) {
+                console.log('添加作品成功');
+                return true;
+            }
+            else {
+                console.log('添加作品失败');
+                return false;
+            }
+        }
+        catch (err) {
+            console.error('添加作品失败:', err);
+            return false;
+        }
+    });
+}
+exports.addOneWorks = addOneWorks;
 /** 获取works数据 */
 function getAllWorks() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const document = yield models_1.MODLES.webInfo.find().exec();
+            const document = yield models_1.MODLES.works.find().exec();
             if (document) {
                 console.log('作品列表存在:', document);
                 return document;
             }
             else {
                 console.log('作品列表不存在');
-                return null;
+                return false;
             }
         }
         catch (err) {
             console.error('查询作品列表失败:', err);
-            return null;
+            return false;
         }
     });
 }
@@ -54,23 +75,23 @@ exports.getAllWorks = getAllWorks;
 function getOneWorks(id) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const document = yield models_1.MODLES.webInfo
+            const document = yield models_1.MODLES.works
                 .findOne({
                 _id: id,
             })
                 .exec();
             if (document) {
                 console.log('作品存在:', document);
-                return document;
+                return true;
             }
             else {
                 console.log('作品不存在');
-                return null;
+                return false;
             }
         }
         catch (err) {
             console.error('查询作品失败:', err);
-            return null;
+            return false;
         }
     });
 }
@@ -79,23 +100,23 @@ exports.getOneWorks = getOneWorks;
 function delOneWork(id) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const document = yield models_1.MODLES.webInfo
+            const document = yield models_1.MODLES.works
                 .findOneAndRemove({
                 _id: id,
             })
                 .exec();
             if (document) {
                 console.log('作品已删除:', document);
-                return document;
+                return true;
             }
             else {
                 console.log('作品不存在');
-                return null;
+                return false;
             }
         }
         catch (err) {
             console.error('删除作品失败:', err);
-            return null;
+            return false;
         }
     });
 }
@@ -104,21 +125,21 @@ exports.delOneWork = delOneWork;
 function updateWorksPartial(id, updateData) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const updatedWorks = yield models_1.MODLES.webInfo
+            const updatedWorks = yield models_1.MODLES.works
                 .findOneAndUpdate({ _id: id }, { $set: updateData }, { new: true })
                 .exec();
             if (updatedWorks) {
                 console.log('作品信息部分更新成功:', updatedWorks);
-                return updatedWorks;
+                return true;
             }
             else {
                 console.log('作品信息不存在，无法部分更新');
-                return null;
+                return false;
             }
         }
         catch (err) {
             console.error('作品信息更新失败:', err);
-            return null;
+            return false;
         }
     });
 }
@@ -127,21 +148,21 @@ exports.updateWorksPartial = updateWorksPartial;
 function removeTagFromWorks(id, tagToRemoves) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const updatedTags = yield models_1.MODLES.webInfo
+            const updatedTags = yield models_1.MODLES.works
                 .findByIdAndUpdate({ _id: id }, { $pull: { tags: tagToRemoves } }, { new: true })
                 .exec();
             if (updatedTags) {
                 console.log(`标签 "${tagToRemoves}" 已从tags中移除:`, updatedTags);
-                return updatedTags;
+                return true;
             }
             else {
                 console.log('标签信息不存在，无法执行删除操作');
-                return null;
+                return true;
             }
         }
         catch (err) {
             console.error('从标签信息中删除角色失败:', err);
-            return null;
+            return true;
         }
     });
 }
@@ -150,21 +171,21 @@ exports.removeTagFromWorks = removeTagFromWorks;
 function addTagsToWorks(id, tagToAdd) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const updatedTags = yield models_1.MODLES.webInfo
+            const updatedTags = yield models_1.MODLES.works
                 .findByIdAndUpdate({ _id: id }, { $push: { tags: tagToAdd } }, { new: true })
                 .exec();
             if (updatedTags) {
                 console.log(`标签 "${tagToAdd}" 已添加到信息中:`, updatedTags);
-                return updatedTags;
+                return true;
             }
             else {
                 console.log('标签列表不存在，无法执行添加操作');
-                return null;
+                return false;
             }
         }
         catch (err) {
             console.error('向标签列表中添加标签失败:', err);
-            return null;
+            return false;
         }
     });
 }
@@ -173,21 +194,21 @@ exports.addTagsToWorks = addTagsToWorks;
 function insertTagsAtPosition(id, tagToInsert, position) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const updatedTags = yield models_1.MODLES.webInfo
+            const updatedTags = yield models_1.MODLES.works
                 .findByIdAndUpdate({ _id: id }, { $push: { tags: { $each: [tagToInsert], $position: position } } }, { new: true })
                 .exec();
             if (updatedTags) {
                 console.log(`标签 "${updatedTags}" 已插入到标签列表中的位置 ${position}:`, updatedTags);
-                return updatedTags;
+                return true;
             }
             else {
                 console.log('标签信息不存在，无法执行插入操作');
-                return null;
+                return false;
             }
         }
         catch (err) {
             console.error('在标签列表中插入标签失败:', err);
-            return null;
+            return false;
         }
     });
 }

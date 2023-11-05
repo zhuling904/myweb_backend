@@ -10,6 +10,8 @@ dbConnect()
   .then((res) => {
     // 使用首页路由模块
     app.use('/api', API.webInfo);
+    // 作品页面路由模块
+    app.use('/api', API.works);
   })
   .catch((err) => {
     throw new Error('发生错误');

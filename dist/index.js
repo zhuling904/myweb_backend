@@ -12,6 +12,8 @@ const app = (0, express_1.default)();
     .then((res) => {
     // 使用首页路由模块
     app.use('/api', routes_1.API.webInfo);
+    // 作品页面路由模块
+    app.use('/api', routes_1.API.works);
 })
     .catch((err) => {
     throw new Error('发生错误');
