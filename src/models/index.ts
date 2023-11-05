@@ -1,5 +1,7 @@
-import webInfoModel from "./webInfo";
+import webInfoModel from './webInfo';
+import worksModel from './works';
 
 export const MODLES = {
-    webInfo: webInfoModel
-}
+  webInfo: webInfoModel,
+  works: worksModel,
+};

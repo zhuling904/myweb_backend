@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.insertSocialAtPosition = exports.removeSocialFromAuthor = exports.addSocialToWebInfo = exports.insertRoleAtPosition = exports.addRoleToWebInfo = exports.removeRoleFromWebInfo = exports.updateWebInfoPartial = exports.getWebInfo = exports.checkWebInfoExist = exports.addWebInfo = void 0;
+exports.updateVisitors = exports.updateLikes = exports.insertSocialAtPosition = exports.removeSocialFromWebInfo = exports.addSocialToWebInfo = exports.insertRoleAtPosition = exports.addRoleToWebInfo = exports.removeRoleFromWebInfo = exports.updateWebInfoPartial = exports.getWebInfo = exports.checkWebInfoExist = exports.addWebInfo = void 0;
 const models_1 = require("../../../models");
 const authorDataToAdd = {
     author: '朱领',
@@ -44,6 +44,7 @@ const authorDataToAdd = {
             info: 'Doerr_33',
         },
     ],
+    avatarImg: 'https://img2.baidu.com/it/u=3392960719,3424012588&fm=253&fmt=auto&app=120&f=JPEG?w=500&h=500',
     likes: 1,
     visitors: 1,
 };
@@ -105,81 +106,81 @@ exports.getWebInfo = getWebInfo;
 function updateWebInfoPartial(id, updateData) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const updatedAuthor = yield models_1.MODLES.webInfo
+            const updatedWebInfo = yield models_1.MODLES.webInfo
                 .findOneAndUpdate({ _id: id }, { $set: updateData }, { new: true })
                 .exec();
-            if (updatedAuthor) {
-                console.log('网站信息部分更新成功:', updatedAuthor);
-                return updatedAuthor;
+            if (updatedWebInfo) {
+                console.log('网站信息部分更新成功:', updatedWebInfo);
+                return true;
             }
             else {
                 console.log('网站信息不存在，无法部分更新');
-                return null;
+                return false;
             }
         }
         catch (err) {
             console.error('网站信息更新失败:', err);
-            return null;
+            return false;
         }
     });
 }
 exports.updateWebInfoPartial = updateWebInfoPartial;
 /** 删除roles中的指定内容 */
-function removeRoleFromWebInfo(authorId, roleToRemove) {
+function removeRoleFromWebInfo(id, roleToRemove) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const updatedAuthor = yield models_1.MODLES.webInfo
-                .findByIdAndUpdate({ _id: authorId }, { $pull: { roles: roleToRemove } }, { new: true })
+            const updatedRoles = yield models_1.MODLES.webInfo
+                .findByIdAndUpdate({ _id: id }, { $pull: { roles: roleToRemove } }, { new: true })
                 .exec();
-            if (updatedAuthor) {
-                console.log(`角色 "${roleToRemove}" 已从roles中移除:`, updatedAuthor);
-                return updatedAuthor;
+            if (updatedRoles) {
+                console.log(`角色 "${roleToRemove}" 已从roles中移除:`, updatedRoles);
+                return true;
             }
             else {
                 console.log('角色信息不存在，无法执行删除操作');
-                return null;
+                return false;
             }
         }
         catch (err) {
             console.error('从角色信息中删除角色失败:', err);
-            return null;
+            return false;
         }
     });
 }
 exports.removeRoleFromWebInfo = removeRoleFromWebInfo;
 /** 创建一个函数来向 roles 数组中添加指定内容 */
-function addRoleToWebInfo(authorId, roleToAdd) {
+function addRoleToWebInfo(id, roleToAdd) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const updatedAuthor = yield models_1.MODLES.webInfo
-                .findByIdAndUpdate({ _id: authorId }, { $push: { roles: roleToAdd } }, { new: true })
+            const updatedRoles = yield models_1.MODLES.webInfo
+                .findByIdAndUpdate({ _id: id }, { $push: { roles: roleToAdd } }, { new: true })
                 .exec();
-            if (updatedAuthor) {
-                console.log(`角色 "${roleToAdd}" 已添加到信息中:`, updatedAuthor);
-                return updatedAuthor;
+            if (updatedRoles) {
+                console.log(`角色 "${roleToAdd}" 已添加到信息中:`, updatedRoles);
+                return true;
             }
             else {
                 console.log('信息不存在，无法执行添加操作');
-                return null;
+                return false;
             }
         }
         catch (err) {
             console.error('向信息中添加角色失败:', err);
-            return null;
+            return false;
         }
     });
 }
 exports.addRoleToWebInfo = addRoleToWebInfo;
 /** 创建一个函数来在 roles 数组的指定位置插入内容 */
-function insertRoleAtPosition(authorId, roleToInsert, position) {
+function insertRoleAtPosition(id, roleToInsert, position) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const updatedAuthor = yield models_1.MODLES.webInfo
-                .findByIdAndUpdate({ _id: authorId }, { $push: { roles: { $each: [roleToInsert], $position: position } } }, { new: true })
+            const updatedRoles = yield models_1.MODLES.webInfo
+                .findByIdAndUpdate({ _id: id }, { $push: { roles: { $each: [roleToInsert], $position: position } } }, { new: true })
                 .exec();
-            if (updatedAuthor) {
-                console.log(`角色 "${roleToInsert}" 已插入到作者信息中的位置 ${position}:`, updatedAuthor);
-                return updatedAuthor;
+            if (updatedRoles) {
+                console.log(`角色 "${roleToInsert}" 已插入到作者信息中的位置 ${position}:`, updatedRoles);
+                return updatedRoles;
             }
             else {
                 console.log('作者信息不存在，无法执行插入操作');
@@ -202,22 +203,22 @@ function addSocialToWebInfo(id, socialToAdd) {
                 .exec();
             if (updatedSocial) {
                 console.log(`社交链接 "${socialToAdd.name}" 已添加到作者信息中:`, updatedSocial);
-                return updatedSocial;
+                return true;
             }
             else {
                 console.log('作者信息不存在，无法执行添加操作');
-                return null;
+                return false;
             }
         }
         catch (err) {
             console.error('向作者信息中添加社交链接失败:', err);
-            return null;
+            return false;
         }
     });
 }
 exports.addSocialToWebInfo = addSocialToWebInfo;
 /** 创建一个函数来从 social 数组中删除指定内容 */
-function removeSocialFromAuthor(id, socialNameToRemove) {
+function removeSocialFromWebInfo(id, socialNameToRemove) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const updatedSocial = yield models_1.MODLES.webInfo
@@ -225,20 +226,20 @@ function removeSocialFromAuthor(id, socialNameToRemove) {
                 .exec();
             if (updatedSocial) {
                 console.log(`社交链接 "${socialNameToRemove}" 已从信息中移除:`, updatedSocial);
-                return updatedSocial;
+                return true;
             }
             else {
                 console.log('作者信息不存在，无法执行删除操作');
-                return null;
+                return false;
             }
         }
         catch (err) {
             console.error('从作者信息中删除社交链接失败:', err);
-            return null;
+            return false;
         }
     });
 }
-exports.removeSocialFromAuthor = removeSocialFromAuthor;
+exports.removeSocialFromWebInfo = removeSocialFromWebInfo;
 /** 创建一个函数来在 social 数组的指定位置插入内容 */
 function insertSocialAtPosition(id, socialToInsert, position) {
     return __awaiter(this, void 0, void 0, function* () {
@@ -262,3 +263,58 @@ function insertSocialAtPosition(id, socialToInsert, position) {
     });
 }
 exports.insertSocialAtPosition = insertSocialAtPosition;
+/** 更新点赞likes数量 */
+function updateLikes(id, action) {
+    return __awaiter(this, void 0, void 0, function* () {
+        console.log('✅ ~ action:', action);
+        try {
+            const updatedLike = yield models_1.MODLES.webInfo
+                .findByIdAndUpdate({ _id: id }, {
+                $inc: {
+                    likes: action === 'increment' ? 1 : -1,
+                },
+            }, { new: true })
+                .exec();
+            if (updatedLike) {
+                console.log(`点赞成功`, updatedLike);
+                return true;
+            }
+            else {
+                console.log('点赞失败');
+                return false;
+            }
+        }
+        catch (err) {
+            console.error('点赞失败:', err);
+            return false;
+        }
+    });
+}
+exports.updateLikes = updateLikes;
+/** 更新访问量数量 */
+function updateVisitors(id) {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            const updateVisitors = yield models_1.MODLES.webInfo
+                .findByIdAndUpdate({ _id: id }, {
+                $inc: {
+                    visitors: 1,
+                },
+            }, { new: true })
+                .exec();
+            if (updateVisitors) {
+                console.log(`新增访问量成功`, updateVisitors);
+                return true;
+            }
+            else {
+                console.log('新增访问量失败');
+                return false;
+            }
+        }
+        catch (err) {
+            console.error('新增访问量失败:', err);
+            return false;
+        }
+    });
+}
+exports.updateVisitors = updateVisitors;

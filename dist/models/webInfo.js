@@ -36,6 +36,12 @@ const webInfoSchema = new Schema({
             },
         ],
     },
+    // 头像
+    avatarImg: {
+        type: String,
+        default: '',
+        require: true,
+    },
     // 点赞人数
     likes: {
         type: Number,
