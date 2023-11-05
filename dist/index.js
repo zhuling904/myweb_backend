@@ -14,6 +14,8 @@ const app = (0, express_1.default)();
     app.use('/api', routes_1.API.webInfo);
     // 作品页面路由模块
     app.use('/api', routes_1.API.works);
+    // 关于我页面路由模块
+    app.use('/api', routes_1.API.about);
 })
     .catch((err) => {
     throw new Error('发生错误');
