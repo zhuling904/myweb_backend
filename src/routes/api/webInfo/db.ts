@@ -85,7 +85,7 @@ export async function checkWebInfoExist() {
 /** 获取webInfo数据 */
 export async function getWebInfo() {
   try {
-    const document = await MODLES.webInfo.findOne({ author: '朱领' }).exec();
+    const document = await MODLES.webInfo.find().exec();
     if (document) {
       console.log('文档存在:', document);
       return document;
