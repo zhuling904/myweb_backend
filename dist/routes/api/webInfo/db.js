@@ -222,7 +222,7 @@ function removeSocialFromWebInfo(id, socialNameToRemove) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const updatedSocial = yield models_1.MODLES.webInfo
-                .findByIdAndUpdate({ _id: id }, { $pull: { social: { name: socialNameToRemove } } }, { new: true })
+                .findByIdAndUpdate({ _id: id }, { $pull: { social: { title: socialNameToRemove } } }, { new: true })
                 .exec();
             if (updatedSocial) {
                 console.log(`社交链接 "${socialNameToRemove}" 已从信息中移除:`, updatedSocial);

@@ -1,6 +1,6 @@
 export function dealAddSocial(req: any, res: any) {
   const { socialToAdd } = req.body;
-  if (!socialToAdd || !socialToAdd.name || !socialToAdd.link) {
+  if (!socialToAdd || !socialToAdd.title || !socialToAdd.link) {
     return res
       .status(400)
       .json({ error: 'Missing required socialToAdd parameters' });

@@ -236,7 +236,7 @@ export async function removeSocialFromWebInfo(
     const updatedSocial = await MODLES.webInfo
       .findByIdAndUpdate(
         { _id: id },
-        { $pull: { social: { name: socialNameToRemove } } },
+        { $pull: { social: { title: socialNameToRemove } } },
         { new: true },
       )
       .exec();

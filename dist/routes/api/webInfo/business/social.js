@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.dealDelSocial = exports.dealAddSocial = void 0;
 function dealAddSocial(req, res) {
     const { socialToAdd } = req.body;
-    if (!socialToAdd || !socialToAdd.name || !socialToAdd.link) {
+    if (!socialToAdd || !socialToAdd.title || !socialToAdd.link) {
         return res
             .status(400)
             .json({ error: 'Missing required socialToAdd parameters' });
