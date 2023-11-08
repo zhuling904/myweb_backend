@@ -8,13 +8,6 @@ const app = express();
 
 dbConnect()
   .then((res) => {
-    // 允许所有域的跨域请求
-    app.use((req, res, next) => {
-      res.header('Access-Control-Allow-Origin', '*');
-      res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-      res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-      next();
-    });
     // 使用首页路由模块
     app.use('/api', API.webInfo);
     // 作品页面路由模块
