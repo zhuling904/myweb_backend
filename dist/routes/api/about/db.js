@@ -67,7 +67,7 @@ exports.addAbout = addAbout;
 function getAbout() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const document = yield models_1.MODLES.about.findOne({ author: '朱领' }).exec();
+            const document = yield models_1.MODLES.about.find().exec();
             if (document) {
                 console.log('文档存在:', document);
                 return document;

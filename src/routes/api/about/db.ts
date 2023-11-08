@@ -71,7 +71,7 @@ export async function addAbout() {
 /** 获取about数据 */
 export async function getAbout() {
   try {
-    const document = await MODLES.about.findOne({ author: '朱领' }).exec();
+    const document = await MODLES.about.find().exec();
     if (document) {
       console.log('文档存在:', document);
       return document;
