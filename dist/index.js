@@ -20,6 +20,14 @@ const app = (0, express_1.default)();
     .catch((err) => {
     throw new Error('发生错误');
 });
+// 本地开发使用，服务器用nginx设置允许跨域访问该服务
+// app.all('*', function (req, res, next) {
+//   res.header('Access-Control-Allow-Origin', '*');
+//   res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
+//   res.header('Access-Control-Allow-Headers', 'X-Requested-With');
+//   res.header('Access-Control-Allow-Headers', 'Content-Type');
+//   next();
+// });
 app.listen(3001, function () {
     // 监听端口
     console.log('server listening on 3001');

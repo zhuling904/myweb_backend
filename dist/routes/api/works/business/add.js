@@ -32,6 +32,7 @@ function dealAddOneWork(req, res) {
     updateData.tags = tags;
     updateData.title = title;
     updateData.desc = desc;
+    updateData.subType = subType;
     updateData.coverImg = coverImg
         ? coverImg
         : 'https://img2.baidu.com/it/u=3392960719,3424012588&fm=253&fmt=auto&app=120&f=JPEG?w=500&h=500';
