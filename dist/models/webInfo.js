@@ -9,13 +9,13 @@ const Schema = mongoose_1.default.Schema;
 const webInfoSchema = new Schema({
     // 作者
     author: {
-        type: String,
+        type: String, //类型
         default: '朱领',
         required: true,
     },
     // 角色
     roles: {
-        type: [String],
+        type: [String], //类型
         default: ['前端工程师', '篮球爱好者'],
         required: true,
     },

@@ -1,5 +1,6 @@
 export const DB_CONFIG = {
-  DB_HOST: '127.0.0.1',
+  // 服务器部署为这个，访问本地用127
+  DB_HOST: '114.115.160.184',
   DB_PORT: 27017,
   DB_NAME: 'myweb',
 };

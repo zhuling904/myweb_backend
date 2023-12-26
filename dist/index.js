@@ -18,6 +18,7 @@ const app = (0, express_1.default)();
     app.use('/api', routes_1.API.about);
 })
     .catch((err) => {
+    console.log('✅ ~ err:', err);
     throw new Error('发生错误');
 });
 // 本地开发使用，服务器用nginx设置允许跨域访问该服务

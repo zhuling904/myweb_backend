@@ -16,6 +16,7 @@ dbConnect()
     app.use('/api', API.about);
   })
   .catch((err) => {
+    console.log('✅ ~ err:', err);
     throw new Error('发生错误');
   });
 
